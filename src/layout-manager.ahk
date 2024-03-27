@@ -15,7 +15,7 @@
     WinMove, %activeTitle%,, %marginX%, %marginY%, %newWidth%, %newHeight%
 return
 
-; Win + U Moves current window to upper half of the screen with 10px margin
+; Win + U Moves current window to upper 68% of the screen with 10px margin
 #U::
     WinGetTitle, activeTitle, A
     marginX = 10
@@ -30,5 +30,25 @@ return
     newHeight /= 16
     newHeight -= %marginYTop%
 
+    WinMove, %activeTitle%,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
+return
+
+; Win + B Moves current window to bottom 32% of the screen with 10px margin
+#B::
+    WinGetTitle, activeTitle, A
+    marginX = 10
+    marginYBottom = 10
+    marginYTop = %A_ScreenHeight%
+    ; 11 / 16 is roughly .68
+    marginYTop *= 11
+    marginYTop /= 16
+
+    newWidth = %A_ScreenWidth%
+    ; Subtract marginX twice (once for left and right)
+    newWidth -= %marginX%
+    newWidth -= %marginX%
+    newHeight = %A_ScreenHeight%
+    newHeight -= %marginYTop%
+    newHeight -= %marginYBottom%
     WinMove, %activeTitle%,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
 return
