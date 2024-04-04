@@ -7,3 +7,4 @@ DetectHiddenWindows, On
 #SingleInstance Force
 
 #Include src/layout-manager.ahk
+#Include src/other.ahk
