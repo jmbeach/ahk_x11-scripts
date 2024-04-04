@@ -8,3 +8,4 @@ DetectHiddenWindows, On
 
 #Include src/layout-manager.ahk
 #Include src/other.ahk
+#Include src/launcher.ahk
