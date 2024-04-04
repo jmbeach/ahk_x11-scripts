@@ -1,6 +1,5 @@
 ; Win + Shift + H moves window to left half of screen
 #+H::
-    WinGetTitle, activeTitle, A
     marginX = 10
     marginY = 45
     newWidth = %A_ScreenWidth%
@@ -11,7 +10,7 @@
     newHeight -= %marginY%
     newHeight -= %marginY%
 
-    WinMove, %activeTitle%,, %marginX%, %marginY%, %newWidth%, %newHeight%
+    WinMove, A,, %marginX%, %marginY%, %newWidth%, %newHeight%
 return
 
 ; Win + Shift + L moves window to right half of screen
@@ -29,8 +28,8 @@ return
     newHeight -= %marginY%
     newHeight -= %marginY%
 
-    WinMove, %activeTitle%,, %newX%, %marginY%, %newWidth%, %newHeight%
-    WinMove, %activeTitle%,, %newX%, %marginY%, %newWidth%, %newHeight%
+    WinMove, A,, %newX%, %marginY%, %newWidth%, %newHeight%
+    WinMove, A,, %newX%, %marginY%, %newWidth%, %newHeight%
 return
 
 
@@ -48,7 +47,7 @@ return
     newHeight -= %marginY%
     newHeight -= %marginY%
 
-    WinMove, %activeTitle%,, %marginX%, %marginY%, %newWidth%, %newHeight%
+    WinMove, A,, %marginX%, %marginY%, %newWidth%, %newHeight%
 return
 
 ; Win + U Moves current window to upper 68% of the screen with 10px margin
@@ -66,7 +65,7 @@ return
     newHeight /= 16
     newHeight -= %marginYTop%
 
-    WinMove, %activeTitle%,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
+    WinMove, A,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
 return
 
 ; Win + B Moves current window to bottom 32% of the screen with 10px margin
@@ -86,6 +85,6 @@ return
     newHeight = %A_ScreenHeight%
     newHeight -= %marginYTop%
     newHeight -= %marginYBottom%
-    WinMove, %activeTitle%,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
-    WinMove, %activeTitle%,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
+    WinMove, A,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
+    WinMove, A,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
 return
