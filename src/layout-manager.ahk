@@ -1,3 +1,39 @@
+; Win + Shift + H moves window to left half of screen
+#+H::
+    WinGetTitle, activeTitle, A
+    marginX = 10
+    marginY = 45
+    newWidth = %A_ScreenWidth%
+    newWidth /= 2
+    newWidth -= %marginX%
+    newHeight = %A_ScreenHeight%
+    ; Subtract marginY twice (once for top and bottom)
+    newHeight -= %marginY%
+    newHeight -= %marginY%
+
+    WinMove, %activeTitle%,, %marginX%, %marginY%, %newWidth%, %newHeight%
+return
+
+; Win + Shift + L moves window to right half of screen
+#+L::
+    WinGetTitle, activeTitle, A
+    marginX = 10
+    marginY = 45
+    newX = %A_ScreenWidth%
+    newX /= 2
+    newWidth = %A_ScreenWidth%
+    newWidth /= 2
+    newWidth -= %marginX%
+    newHeight = %A_ScreenHeight%
+    ; Subtract marginY twice (once for top and bottom)
+    newHeight -= %marginY%
+    newHeight -= %marginY%
+
+    WinMove, %activeTitle%,, %newX%, %marginY%, %newWidth%, %newHeight%
+    WinMove, %activeTitle%,, %newX%, %marginY%, %newWidth%, %newHeight%
+return
+
+
 ; Win + Shift + U Maximizes current window with 10px margin
 #+U::
     WinGetTitle, activeTitle, A
@@ -50,5 +86,6 @@ return
     newHeight = %A_ScreenHeight%
     newHeight -= %marginYTop%
     newHeight -= %marginYBottom%
+    WinMove, %activeTitle%,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
     WinMove, %activeTitle%,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
 return
