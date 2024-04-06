@@ -3,10 +3,16 @@ CapsLock::Send, {Down}
 +CapsLock::Send, {Up}
 
 ; Makes Windows key + f perform ctrl + f
-#f::^f
+; Make sure to disable default behavior of `Super + f`
+#f::Send, ^f
 
 ; Makes windows key + c perform ctrl + c
-#c::^c
+#c::Send, ^c
 
-; Makes windows key + v perform ctrl + v
-#v::^v
+; Makes Super + v perform ctrl + shift + v (use this because works in terminal)
+; Make sure to disable default behavior of `Super + v`
+#v::Send, ^+v
+
+; Makes Super + a perform ctrl + a
+; Make sure to disable default behavior of `Super + a`
+#a::Send, ^a

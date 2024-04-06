@@ -39,6 +39,7 @@ This script has more miscellaneous utilities.
 
 | Key binding | Description |
 | --- | --- |
+| `Win + A` | Performs ctrl + a. This helps me not get too tripped up when switching back and forth from a mac. |
 | `Win + C` | Performs ctrl + c. This helps me not get too tripped up when switching back and forth from a mac. |
 | `Win + V` | Performs ctrl + v. This helps me not get too tripped up when switching back and forth from a mac. |
 | `Win + F` | Performs ctrl + f. This helps me not get too tripped up when switching back and forth from a mac. |
