@@ -1,5 +1,6 @@
 #DefineCommand doesActiveWindowGetAdjustment, lblDoesActiveWindowGetAdjustment
 lblDoesActiveWindowGetAdjustment:
+; Interestingly, Brave started acting normal when I turned on "Use system title bar and borders"
 windowsToAdjust = Brave-browser
 WinGetClass, activeClass, A
 if activeClass in %windowsToAdjust%
@@ -141,9 +142,13 @@ return
 
 ; Win + B Moves current window to bottom 32% of the screen with 10px margin
 #B::
+    getWidthHeightAdjustmentFactor,, 20, 75, adjustmentWidth, adjustmentHeight
+    getXYAdjustmentFactor,, 20, 15, adjustmentX, adjustmentY
     marginX = 10
+    marginX -= %adjustmentX%
     marginYBottom = 45
     marginYTop = %A_ScreenHeight%
+    marginYTop -= %adjustmentY%
     ; 11 / 16 is roughly .68
     marginYTop *= 11
     marginYTop /= 16
@@ -152,9 +157,11 @@ return
     ; Subtract marginX twice (once for left and right)
     newWidth -= %marginX%
     newWidth -= %marginX%
+    newWidth += %adjustmentWidth%
     newHeight = %A_ScreenHeight%
     newHeight -= %marginYTop%
     newHeight -= %marginYBottom%
+    newHeight += %adjustmentHeight%
     WinMove, A,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
     WinMove, A,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
 return
