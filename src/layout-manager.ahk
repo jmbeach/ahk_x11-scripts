@@ -1,3 +1,13 @@
+; Constants
+MARGIN_X = 13
+MARGIN_Y_TOP = 40
+MARGIN_Y_BOTTOM = 50
+WIDTH_ADJUSTMENT = 2
+WIDTH_ADJUSTMENT_HALF_SCREEN = 28
+HEIGHT_ADJUSTMENT = 70
+X_ADJUSTMENT = -15
+Y_ADJUSTMENT = -10
+
 #DefineCommand doesActiveWindowGetAdjustment, lblDoesActiveWindowGetAdjustment
 lblDoesActiveWindowGetAdjustment:
 ; Interestingly, Brave started acting normal when I turned on "Use system title bar and borders"
@@ -49,82 +59,85 @@ Return
 
 ; Win + Shift + H moves window to left half of screen
 #+H::
-    getWidthHeightAdjustmentFactor,, 20, 60, adjustmentWidth, adjustmentHeight
-    getXYAdjustmentFactor,, 20, 15, adjustmentX, adjustmentY
-    marginX = 10
-    marginX -= %adjustmentX%
-    marginY = 45
-    marginY -= %adjustmentY%
+    getWidthHeightAdjustmentFactor,, %WIDTH_ADJUSTMENT_HALF_SCREEN%, %HEIGHT_ADJUSTMENT%, adjustmentWidth, adjustmentHeight
+    getXYAdjustmentFactor,, %X_ADJUSTMENT%, %Y_ADJUSTMENT%, adjustmentX, adjustmentY
+    halfMarginX = %MARGIN_X%
+    halfMarginX /= 2
+    marginX = %MARGIN_X%
+    marginYTop = %MARGIN_Y_TOP%
+    marginYTop += %adjustmentY%
     newWidth = %A_ScreenWidth%
     newWidth /= 2
     newWidth -= %marginX%
+    newWidth -= %halfMarginX%
     newWidth += %adjustmentWidth%
     newHeight = %A_ScreenHeight%
-    ; Subtract marginY twice (once for top and bottom)
-    newHeight -= %marginY%
-    newHeight -= %marginY%
+    newHeight -= %marginYTop%
+    newHeight -= %MARGIN_Y_BOTTOM%
     newHeight += %adjustmentHeight%
+    newX = %marginX%
+    newX += %adjustmentX%
 
-    WinMove, A,, %marginX%, %marginY%, %newWidth%, %newHeight%
+    WinMove, A,, %newX%, %marginYTop%, %newWidth%, %newHeight%
 return
 
 ; Win + Shift + L moves window to right half of screen
 #+L::
-    getWidthHeightAdjustmentFactor,, 20, 60, adjustmentWidth, adjustmentHeight
-    getXYAdjustmentFactor,, 20, 15, adjustmentX, adjustmentY
-    marginX = 10
-    marginX -= %adjustmentX%
-    marginY = 45
-    marginY -= %adjustmentY%
+    getWidthHeightAdjustmentFactor,, %WIDTH_ADJUSTMENT_HALF_SCREEN%, %HEIGHT_ADJUSTMENT%, adjustmentWidth, adjustmentHeight
+    getXYAdjustmentFactor,, %X_ADJUSTMENT%, %Y_ADJUSTMENT%, adjustmentX, adjustmentY
+    marginX = %MARGIN_X%
+    halfMarginX = %MARGIN_X%
+    halfMarginX /= 2
+    marginYTop = %MARGIN_Y_TOP%
+    marginYTop += %adjustmentY%
     newX = %A_ScreenWidth%
     newX /= 2
-    newX += %marginX%
+    newX += %halfMarginX%
+    newX += %adjustmentX%
     newWidth = %A_ScreenWidth%
     newWidth /= 2
     newWidth -= %marginX%
-    newWidth -= %marginX%
+    newWidth -= %halfMarginX%
     newWidth += %adjustmentWidth%
     newHeight = %A_ScreenHeight%
-    ; Subtract marginY twice (once for top and bottom)
-    newHeight -= %marginY%
-    newHeight -= %marginY%
+    newHeight -= %marginYTop%
+    newHeight -= %MARGIN_Y_BOTTOM%
     newHeight += %adjustmentHeight%
 
-    WinMove, A,, %newX%, %marginY%, %newWidth%, %newHeight%
-    WinMove, A,, %newX%, %marginY%, %newWidth%, %newHeight%
+    WinMove, A,, %newX%, %marginYTop%, %newWidth%, %newHeight%
+    WinMove, A,, %newX%, %marginYTop%, %newWidth%, %newHeight%
 return
 
 
 ; Win + Shift + U Maximizes current window with 10px margin
 #+U::
-    getWidthHeightAdjustmentFactor,, 20, 60, adjustmentWidth, adjustmentHeight
-    getXYAdjustmentFactor,, 20, 15, adjustmentX, adjustmentY
-    marginX = 10
-    marginX -= %adjustmentX%
-    marginY = 45
-    marginY -= %adjustmentY%
+    getWidthHeightAdjustmentFactor,, %WIDTH_ADJUSTMENT%, %HEIGHT_ADJUSTMENT%, adjustmentWidth, adjustmentHeight
+    getXYAdjustmentFactor,, %X_ADJUSTMENT%, %Y_ADJUSTMENT%, adjustmentX, adjustmentY
+    marginX = %MARGIN_X%
+    marginX += %adjustmentX%
+    marginYTop = %MARGIN_Y_TOP%
+    marginYTop += %adjustmentY%
     newWidth = %A_ScreenWidth%
     ; Subtract marginX twice (once for left and right)
     newWidth -= %marginX%
     newWidth -= %marginX%
     newWidth += %adjustmentWidth%
     newHeight = %A_ScreenHeight%
-    ; Subtract marginY twice (once for top and bottom)
-    newHeight -= %marginY%
-    newHeight -= %marginY%
+    newHeight -= %marginYTop%
+    newHeight -= %MARGIN_Y_BOTTOM%
     newHeight += %adjustmentHeight%
 
-    WinMove, A,, %marginX%, %marginY%, %newWidth%, %newHeight%
-return
+    WinMove, A,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
+Return
 
 ; Win + U Moves current window to upper 68% of the screen with 10px margin
 #U::
-    getWidthHeightAdjustmentFactor,, 20, 60, adjustmentWidth, adjustmentHeight
-    getXYAdjustmentFactor,, 20, 15, adjustmentX, adjustmentY
-    marginX = 10
-    marginX -= %adjustmentX%
-    marginYTop = 45
-    marginYTop -= %adjustmentY%
+    getWidthHeightAdjustmentFactor,, %WIDTH_ADJUSTMENT%, %HEIGHT_ADJUSTMENT%, adjustmentWidth, adjustmentHeight
+    getXYAdjustmentFactor,, %X_ADJUSTMENT%, %Y_ADJUSTMENT%, adjustmentX, adjustmentY
+    marginX = %MARGIN_X%
+    marginX += %adjustmentX%
+    marginYTop = %MARGIN_Y_TOP%
+    marginYTop += %adjustmentY%
     newWidth = %A_ScreenWidth%
     ; Subtract marginX twice (once for left and right)
     newWidth -= %marginX%
@@ -135,6 +148,7 @@ return
     newHeight *= 11
     newHeight /= 16
     newHeight -= %marginYTop%
+    newHeight -= %MARGIN_Y_BOTTOM%
     newHeight += %adjustmentHeight%
 
     WinMove, A,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
@@ -142,13 +156,12 @@ return
 
 ; Win + B Moves current window to bottom 32% of the screen with 10px margin
 #B::
-    getWidthHeightAdjustmentFactor,, 20, 75, adjustmentWidth, adjustmentHeight
-    getXYAdjustmentFactor,, 20, 15, adjustmentX, adjustmentY
-    marginX = 10
-    marginX -= %adjustmentX%
-    marginYBottom = 45
+    getWidthHeightAdjustmentFactor,, %WIDTH_ADJUSTMENT%, 75, adjustmentWidth, adjustmentHeight
+    getXYAdjustmentFactor,, %X_ADJUSTMENT%, %Y_ADJUSTMENT%, adjustmentX, adjustmentY
+    marginX = %MARGIN_X%
+    marginX += %adjustmentX%
     marginYTop = %A_ScreenHeight%
-    marginYTop -= %adjustmentY%
+    marginYTop += %adjustmentY%
     ; 11 / 16 is roughly .68
     marginYTop *= 11
     marginYTop /= 16
@@ -160,7 +173,7 @@ return
     newWidth += %adjustmentWidth%
     newHeight = %A_ScreenHeight%
     newHeight -= %marginYTop%
-    newHeight -= %marginYBottom%
+    newHeight -= %MARGIN_Y_BOTTOM%
     newHeight += %adjustmentHeight%
     WinMove, A,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
     WinMove, A,, %marginX%, %marginYTop%, %newWidth%, %newHeight%
