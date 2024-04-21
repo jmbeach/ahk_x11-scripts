@@ -11,7 +11,7 @@ Y_ADJUSTMENT = -10
 #DefineCommand doesActiveWindowGetAdjustment, lblDoesActiveWindowGetAdjustment
 lblDoesActiveWindowGetAdjustment:
 ; Interestingly, Brave started acting normal when I turned on "Use system title bar and borders"
-windowsToAdjust = Brave-browser
+windowsToAdjust = Brave-browser,Alacritty
 WinGetClass, activeClass, A
 if activeClass in %windowsToAdjust%
 {
@@ -32,6 +32,13 @@ if needsAdjustment = true
 {
     %A_Param4% = %A_Param2%
     %A_Param5% = %A_Param3%
+    ; Hacky... should make this better
+    WinGetClass, activeClass, A
+    if activeClass = Alacritty
+    {
+        %A_Param4% = 0
+        %A_Param5% = 40
+    }
 }
 else
 {
@@ -49,6 +56,13 @@ if needsAdjustment = true
 {
     %A_Param4% = %A_Param2%
     %A_Param5% = %A_Param3%
+    ; Hacky... should make this better
+    WinGetClass, activeClass, A
+    if activeClass = Alacritty
+    {
+        %A_Param4% = 0
+        %A_Param5% = 0
+    }
 }
 else
 {

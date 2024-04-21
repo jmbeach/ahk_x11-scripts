@@ -45,4 +45,5 @@ This script has more miscellaneous utilities.
 | `Win + F` | Performs ctrl + f. This helps me not get too tripped up when switching back and forth from a mac. |
 | `Capslock` | Sends the down arrow key. This is especially useful with context menus to quickly cycle through options without needing the mouse. |
 | `Shift + Capslock` | Sends the up arrow key. This is especially useful with context menus to quickly cycle through options without needing the mouse. |
+| `Win + Q` | Sends alt + F4 |
 

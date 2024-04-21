@@ -16,3 +16,6 @@ CapsLock::Send, {Down}
 ; Makes Super + a perform ctrl + a
 ; Make sure to disable default behavior of `Super + a`
 #a::Send, ^a
+
+; Super + q sends alt + F4
+#q::Send, !{F4}
