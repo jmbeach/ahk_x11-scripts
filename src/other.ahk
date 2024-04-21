@@ -19,3 +19,6 @@ CapsLock::Send, {Down}
 
 ; Super + q sends alt + F4
 #q::Send, !{F4}
+
+; Makes Super + w perform ctrl + w
+#w::Send, ^w

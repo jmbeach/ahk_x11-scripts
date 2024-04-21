@@ -43,7 +43,8 @@ This script has more miscellaneous utilities.
 | `Win + C` | Performs ctrl + c. This helps me not get too tripped up when switching back and forth from a mac. |
 | `Win + V` | Performs ctrl + v. This helps me not get too tripped up when switching back and forth from a mac. |
 | `Win + F` | Performs ctrl + f. This helps me not get too tripped up when switching back and forth from a mac. |
+| `Win + Q` | Sends alt + F4. This helps me not get too tripped up when switching back and forth from a mac. |
+| `Win + W` | Sends ctrl + w. This helps me not get too tripped up when switching back and forth from a mac. |
 | `Capslock` | Sends the down arrow key. This is especially useful with context menus to quickly cycle through options without needing the mouse. |
 | `Shift + Capslock` | Sends the up arrow key. This is especially useful with context menus to quickly cycle through options without needing the mouse. |
-| `Win + Q` | Sends alt + F4 |
 
