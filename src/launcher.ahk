@@ -1,5 +1,6 @@
 ; Open the terminal with windows key and enter
 #Enter::
     alacritty = %A_Home%/.cargo/bin/alacritty
-    Run, %alacritty%
+    EnvGet, home, HOME
+    Run, %alacritty%, %home%
 return
