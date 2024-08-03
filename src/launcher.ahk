@@ -2,5 +2,5 @@
 #Enter::
     alacritty = %A_Home%/.cargo/bin/alacritty
     EnvGet, home, HOME
-    Run, %alacritty%, %home%
+    Run, %alacritty% --title "", %home%
 return

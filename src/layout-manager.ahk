@@ -6,29 +6,29 @@ MARGIN_Y_TOP = 40
 ; This had to be so high to compensate for how much top margin there is.
 MARGIN_Y_BOTTOM = 50
 
+WIDTH_ADJUSTMENT = 0
 ; These values configure adjustments made to specific windows that do not look right using the
 ; default settings. Brave browser is an example
-WIDTH_ADJUSTMENT = 2
 ; Comma-separated values of configs. Alacritty:0 means alacritty gets no adjustment for width
 ; Add a comma and your config (such as Terminal:50) to create your own custom adjustments
 ;
 ; I do this because Alacritty without the title bar decoration needs more height than
 ; normal, but everything else about it looks right.
-WIDTH_ADJUSTMENT_CUSTOM = Alacritty:0
+WIDTH_ADJUSTMENT_CUSTOM = Brave-browser:5
 ; When sending the window to half the sreen left or right,
 ; need a different width adjustment
 WIDTH_ADJUSTMENT_HALF_SCREEN = 28
-WIDTH_ADJUSTMENT_HALF_SCREEN_CUSTOM = Alacritty:0
-HEIGHT_ADJUSTMENT = 70
-HEIGHT_ADJUSTMENT_CUSTOM = Alacritty:40
+WIDTH_ADJUSTMENT_HALF_SCREEN_CUSTOM = PLACEHOLDER:0
+HEIGHT_ADJUSTMENT = 0
+HEIGHT_ADJUSTMENT_CUSTOM = Brave-browser:70
 ; When sending the window to bottom portion of screen
 ; need a different height adjustment
-HEIGHT_ADJUSTMENT_BOTTOM = 70
-HEIGHT_ADJUSTMENT_BOTTOM_CUSTOM = Alacritty:40
-X_ADJUSTMENT = -15
-X_ADJUSTMENT_CUSTOM = Alacritty:0
-Y_ADJUSTMENT = -10
-Y_ADJUSTMENT_CUSTOM = Alacritty:0
+HEIGHT_ADJUSTMENT_BOTTOM = 0
+HEIGHT_ADJUSTMENT_BOTTOM_CUSTOM = Brave-browser:70
+X_ADJUSTMENT = 0
+X_ADJUSTMENT_CUSTOM = Brave-browser:-15
+Y_ADJUSTMENT = 0
+Y_ADJUSTMENT_CUSTOM = Brave-browser:-10
 
 ;(result  )
 ;(A_Param1)
