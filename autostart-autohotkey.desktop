@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Autohotkey X11
+Exec=/home/jared/code/github/jmbeach/autohotkey-x11-scripts/autohotkey-startup.sh
+X-GNOME-Autostart-enabled=true

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+# This file is for use in appimages, which rewrite the path.
+# Other uses would have to replace these with the correct path.
+Exec=/home/jared/code/github/jmbeach/autohotkey-x11-scripts/autohotkey-startup.sh
+Name=Autohotkey All Scripts
+Comment=All my custom scripts
+Icon=ahk_x11

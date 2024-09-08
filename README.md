@@ -39,12 +39,19 @@ This script has more miscellaneous utilities.
 
 | Key binding | Description |
 | --- | --- |
-| `Win + A` | Performs ctrl + a. This helps me not get too tripped up when switching back and forth from a mac. |
-| `Win + C` | Performs ctrl + c. This helps me not get too tripped up when switching back and forth from a mac. |
-| `Win + V` | Performs ctrl + v. This helps me not get too tripped up when switching back and forth from a mac. |
-| `Win + F` | Performs ctrl + f. This helps me not get too tripped up when switching back and forth from a mac. |
-| `Win + Q` | Sends alt + F4. This helps me not get too tripped up when switching back and forth from a mac. |
-| `Win + W` | Sends ctrl + w. This helps me not get too tripped up when switching back and forth from a mac. |
-| `Capslock` | Sends the down arrow key. This is especially useful with context menus to quickly cycle through options without needing the mouse. |
-| `Shift + Capslock` | Sends the up arrow key. This is especially useful with context menus to quickly cycle through options without needing the mouse. |
+| `Win + A` | Performs `ctrl + a`. This helps me not get too tripped up when switching back and forth from a mac. |
+| `Win + C` | Performs `ctrl + c`. This helps me not get too tripped up when switching back and forth from a mac. |
+| `Win + V` | Performs `ctrl + v`. This helps me not get too tripped up when switching back and forth from a mac. |
+| `Win + F` | Performs `ctrl + f`. This helps me not get too tripped up when switching back and forth from a mac. |
+| `Win + Q` | Sends `alt + F4`. This helps me not get too tripped up when switching back and forth from a mac. |
+| `Win + W` | Sends `ctrl + w`. This helps me not get too tripped up when switching back and forth from a mac. |
+| `Capslock` | Sends the `down` arrow key. This is especially useful with context menus to quickly cycle through options without needing the mouse. |
+| `Shift + Capslock` | Sends the `up` arrow key. This is especially useful with context menus to quickly cycle through options without needing the mouse. |
 
+# Installation
+
+1. Install [AHK X11](https://github.com/phil294/AHK_X11) (I like to just place the `AppImage` in `~/.local/bin`)
+2. Clone this repo
+3. Make the file `autohotkey-startup.sh` executable
+4. Copy `autostart-autohotkey.desktop` to `~/.config/autostart/`
+5. Copy `Autohotkey_All.desktop` to `~/.local/share/applications/`
