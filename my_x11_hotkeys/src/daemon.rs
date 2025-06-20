@@ -2,6 +2,8 @@ use crate::{
     window::get_active_window_class,
     xbindkeys::{reload_xbindkeys, set_bindings_for_window},
 };
+use inputbot::{KeySequence, KeybdKey};
+use std::{thread::sleep, time::Duration};
 
 /*Monitors the active window and triggers an event when the active window changes.
 * When the active window changes, the daemon processes the ~/.xbindkeysrc file and looks
@@ -29,6 +31,22 @@ pub fn run_daemon() {
     let mut previous_class = String::from("None");
     /* Configuration so that this program handles specific bindings
      * only when specific applications are active */
+    KeybdKey::LControlKey.bind(|| {
+        while KeybdKey::LControlKey.is_pressed() {
+            if KeybdKey::NKey.is_pressed() {
+                KeybdKey::DownKey.press();
+                KeybdKey::DownKey.release();
+                sleep(Duration::from_millis(30));
+            } else if KeybdKey::PKey.is_pressed() {
+                KeybdKey::UpKey.press();
+                KeybdKey::UpKey.release();
+                sleep(Duration::from_millis(30));
+            }
+        }
+    });
+    println!("Start handling input events");
+    inputbot::handle_input_events();
+    println!("Daemon started. Monitoring active window changes...");
     loop {
         let active_class = get_active_window_class(None).to_lowercase();
 

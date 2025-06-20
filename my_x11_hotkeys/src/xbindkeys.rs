@@ -44,11 +44,11 @@ pub fn set_bindings_for_window(active_class: &str) {
                     all_negative = false;
                 }
                 if class_name == active_class {
-                    println!("Active class matches: {}", class_name);
+                    // println!("Active class matches: {}", class_name);
                     uncommenting = 2;
                     any_match = true;
                 } else if class_name == format!("!{}", active_class) {
-                    println!("Negative active class matches: {}", class_name);
+                    // println!("Negative active class matches: {}", class_name);
                     any_match = true;
                     commenting = 2;
                 }
@@ -56,14 +56,14 @@ pub fn set_bindings_for_window(active_class: &str) {
             // If the only things specified are exclusions, then we want to uncomment when
             // the active class is not in the list
             if !any_match && all_negative {
-                println!("All classes are negative, uncommenting for non-matching active class");
+                // println!("All classes are negative, uncommenting for non-matching active class");
                 uncommenting = 2;
             } else if !any_match {
-                println!("No matches found, commenting out the section");
+                // println!("No matches found, commenting out the section");
                 commenting = 2;
             }
         } else if uncommenting > 0 {
-            println!("Uncommenting line: {}", line);
+            // println!("Uncommenting line: {}", line);
             if line.starts_with("#") {
                 new_content.push(line.trim_start_matches('#').to_string());
             } else {
@@ -71,7 +71,7 @@ pub fn set_bindings_for_window(active_class: &str) {
             }
             uncommenting -= 1;
         } else if commenting > 0 {
-            println!("Commenting line: {}", line);
+            // println!("Commenting line: {}", line);
             commenting -= 1;
             if !line.starts_with("#") {
                 new_content.push(format!("#{}", line));
