@@ -14,21 +14,21 @@ WIDTH_ADJUSTMENT = 0
 ;
 ; I do this because Alacritty without the title bar decoration needs more height than
 ; normal, but everything else about it looks right.
-WIDTH_ADJUSTMENT_CUSTOM = Brave-browser:5
+WIDTH_ADJUSTMENT_CUSTOM = Brave-browser:5,org.gnome.Nautilus:90
 ; When sending the window to half the sreen left or right,
 ; need a different width adjustment
 WIDTH_ADJUSTMENT_HALF_SCREEN = 28
 WIDTH_ADJUSTMENT_HALF_SCREEN_CUSTOM = PLACEHOLDER:0
 HEIGHT_ADJUSTMENT = 0
-HEIGHT_ADJUSTMENT_CUSTOM = Brave-browser:70
+HEIGHT_ADJUSTMENT_CUSTOM = Brave-browser:70,org.gnome.Nautilus:110
 ; When sending the window to bottom portion of screen
 ; need a different height adjustment
 HEIGHT_ADJUSTMENT_BOTTOM = 0
 HEIGHT_ADJUSTMENT_BOTTOM_CUSTOM = Brave-browser:70
 X_ADJUSTMENT = 0
-X_ADJUSTMENT_CUSTOM = Brave-browser:-15
+X_ADJUSTMENT_CUSTOM = Brave-browser:-15,org.gnome.Nautilus:-60
 Y_ADJUSTMENT = 0
-Y_ADJUSTMENT_CUSTOM = Brave-browser:-10
+Y_ADJUSTMENT_CUSTOM = Brave-browser:-10,org.gnome.Nautilus:-50
 
 ;(result  )
 ;(A_Param1)
@@ -150,39 +150,13 @@ Loop, %widthAdjustmentHalfScreen0%
 }
 Return
 
-;(result  )
-;(A_Param1)
-#DefineCommand doesActiveWindowGetAdjustment, lblDoesActiveWindowGetAdjustment
-lblDoesActiveWindowGetAdjustment:
-; Interestingly, Brave started acting normal when I turned on "Use system title bar and borders"
-windowsToAdjust = Brave-browser,Alacritty
-WinGetClass, activeClass, A
-if activeClass in %windowsToAdjust%
-{
-    %A_Param1% = true
-}
-else
-{
-    %A_Param1% = false
-}
-Return
-
 ;For some reason A_Param1 was not getting set (probably a bug in AHK_X11), so I just skip it now
 ;(adjustWidthAmount, adjustHeightAmount, &adjustmentWidth, &adjustmentHeight)
 ;(A_Param2         , A_Param3          , A_Param4        , A_Param5)
 #DefineCommand getWidthHeightAdjustmentFactor, lblGetWidthHeightAdjustmentFactor
 lblGetWidthHeightAdjustmentFactor:
-doesActiveWindowGetAdjustment, needsAdjustment
-if needsAdjustment = true
-{
-    %A_Param4% = %A_Param2%
-    %A_Param5% = %A_Param3%
-}
-else
-{
-    %A_Param4% = 0
-    %A_Param5% = 0
-}
+%A_Param4% = %A_Param2%
+%A_Param5% = %A_Param3%
 Return
 
 ;For some reason A_Param1 was not getting set (probably a bug in AHK_X11), so I just skip it now
@@ -190,17 +164,8 @@ Return
 ;(A_Param2     , A_Param3     , A_Param4    , A_Param5)
 #DefineCommand getXYAdjustmentFactor, lblGetXYAdjustmentFactor
 lblGetXYAdjustmentFactor:
-doesActiveWindowGetAdjustment, needsAdjustment
-if needsAdjustment = true
-{
-    %A_Param4% = %A_Param2%
-    %A_Param5% = %A_Param3%
-}
-else
-{
-    %A_Param4% = 0
-    %A_Param5% = 0
-}
+%A_Param4% = %A_Param2%
+%A_Param5% = %A_Param3%
 Return
 
 ; Win + Shift + H moves window to left half of screen

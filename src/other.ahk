@@ -23,5 +23,26 @@ CapsLock::Send, {Down}
 ; Makes Super + w perform ctrl + w
 #w::Send, ^w
 
-; ^n::Send, {Down}
-; ^p::Send, {Up}
+^n::
+  WinGetClass, class, A
+  if class <> Alacritty
+  {
+    Send, {Down}
+  }
+  else
+  {
+    Send, ^n
+  }
+return
+
+^p::
+  WinGetClass, class, A
+  if class <> Alacritty
+  {
+    Send, {Up}
+  }
+  else
+  {
+    Send, ^p
+  }
+return
