@@ -22,3 +22,6 @@ CapsLock::Send, {Down}
 
 ; Makes Super + w perform ctrl + w
 #w::Send, ^w
+
+; ^n::Send, {Down}
+; ^p::Send, {Up}
